@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:03:30 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 17:34:20 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:27:43 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_images
 	void	*bg_img;
 	void	*wall_img;
 	void	*coll_img;
-	void	*closed_exit;
+	void	*cld_exit;
 	void	*open_exit;
 }	t_images;
 
@@ -121,6 +121,7 @@ int		init_fill_full(char **st, char **fl);
 
 void	free_2d(char **arr);
 void	exit_free(t_vars *vars);
+void	free_allocated_vars(t_vars *vars);
 
 int		count_partolls(t_map map);
 int		count_colls(t_map map);
@@ -156,5 +157,8 @@ int		move_dinau(t_vars *vars);
 void	find_portal_position(t_map map, t_point *player);
 void	mlx_error(t_vars *vars);
 void	safe_put_image(t_vars *vars, void *img, int i, int j);
+void	set_images(t_vars *vars);
+void	set_portal_imgs(t_vars *vars);
+void	set_other_images(t_vars *vars);
 
 #endif

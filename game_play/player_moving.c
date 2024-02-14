@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:17:15 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 15:55:29 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:37:31 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	move_player_right(t_vars *vars)
 			vars->party.collected++;
 		}
 		vars->player_pos.y = vars->player_pos.y + 1;
-		vars->party.movements++;
 	}
 }
 
@@ -126,6 +125,5 @@ void	move_player_left(t_vars *vars)
 			vars->party.collected++;
 		}
 		vars->player_pos.y = vars->player_pos.y - 1;
-		vars->party.movements++;
 	}
 }

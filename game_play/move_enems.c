@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 22:51:38 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 17:29:34 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:18:25 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	reset_image(t_vars *vars, int x, int y)
 		if (vars->party.collected == vars->party.total_colls)
 			safe_put_image (vars, vars->game_images.open_exit, y * 50, x * 50);
 		else
-			safe_put_image (vars, vars->game_images.closed_exit, y * 50, x * 50);
+			safe_put_image (vars, vars->game_images.cld_exit, y * 50, x * 50);
 	}
 	else if (x == vars->player_pos.x && y == vars->player_pos.y)
 	{
@@ -47,12 +47,12 @@ void	check_portal(t_vars *vars)
 
 	if (vars->party.collected == vars->party.total_colls && !opened)
 	{
-		if (mlx_put_image_to_window(vars->mlx, vars->win, vars->game_images.bg_img,
-				vars->party.portal_pos.y * 50,
+		if (mlx_put_image_to_window(vars->mlx, vars->win,
+				vars->game_images.bg_img, vars->party.portal_pos.y * 50,
 				vars->party.portal_pos.x * 50) == -1)
 			mlx_error (vars);
-		if (mlx_put_image_to_window(vars->mlx, vars->win, vars->game_images.open_exit,
-				vars->party.portal_pos.y * 50,
+		if (mlx_put_image_to_window(vars->mlx, vars->win,
+				vars->game_images.open_exit, vars->party.portal_pos.y * 50,
 				vars->party.portal_pos.x * 50) == -1)
 			mlx_error (vars);
 		opened = true;

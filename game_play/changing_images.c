@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:33:53 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 17:29:34 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:37:25 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	change_images_up(t_vars *vars, int i)
 	y = vars->player_pos.y;
 	short_put_img_to_window (vars, x, y, vars->game_images.bg_img);
 	if (vars->map.components[x][y] == 'E')
-		short_put_img_to_window (vars, x, y, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x, y, vars->game_images.cld_exit);
 	short_put_img_to_window (vars, x - 1, y, vars->game_images.bg_img);
 	if (vars->map.components[x - 1][y] == 'E')
-		short_put_img_to_window (vars, x - 1, y, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x - 1, y, vars->game_images.cld_exit);
 	if (vars->party.player_direction == 'r')
 	{
 		if (mlx_put_image_to_window (vars->mlx, vars->win,
@@ -55,10 +55,10 @@ void	change_images_down(t_vars *vars, int i)
 	y = vars->player_pos.y;
 	short_put_img_to_window (vars, x, y, vars->game_images.bg_img);
 	if (vars->map.components[x][y] == 'E')
-		short_put_img_to_window (vars, x, y, vars->game_images.closed_exit);
-	short_put_img_to_window (vars, x + 1, y,  vars->game_images.bg_img);
+		short_put_img_to_window (vars, x, y, vars->game_images.cld_exit);
+	short_put_img_to_window (vars, x + 1, y, vars->game_images.bg_img);
 	if (vars->map.components[x + 1][y] == 'E')
-		short_put_img_to_window (vars, x + 1, y, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x + 1, y, vars->game_images.cld_exit);
 	if (vars->party.player_direction == 'r')
 	{
 		if (mlx_put_image_to_window (vars->mlx, vars->win,
@@ -80,12 +80,13 @@ void	change_images_right(t_vars *vars, int i)
 
 	x = vars->player_pos.x;
 	y = vars->player_pos.y;
+	vars->party.movements++;
 	short_put_img_to_window (vars, x, y, vars->game_images.bg_img);
 	if (vars->map.components[x][y] == 'E')
-		short_put_img_to_window (vars, x, y, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x, y, vars->game_images.cld_exit);
 	short_put_img_to_window (vars, x, y + 1, vars->game_images.bg_img);
 	if (vars->map.components[x][y + 1] == 'E')
-		short_put_img_to_window (vars, x, y + 1, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x, y + 1, vars->game_images.cld_exit);
 	if (vars->party.player_direction == 'r')
 	{
 		if (mlx_put_image_to_window (vars->mlx, vars->win,
@@ -107,12 +108,13 @@ void	change_images_left(t_vars *vars, int i)
 
 	x = vars->player_pos.x;
 	y = vars->player_pos.y;
+	vars->party.movements++;
 	short_put_img_to_window (vars, x, y, vars->game_images.bg_img);
 	if (vars->map.components[x][y] == 'E')
-		short_put_img_to_window (vars, x, y, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x, y, vars->game_images.cld_exit);
 	short_put_img_to_window (vars, x, y - 1, vars->game_images.bg_img);
 	if (vars->map.components[x][y - 1] == 'E')
-		short_put_img_to_window (vars, x, y - 1, vars->game_images.closed_exit);
+		short_put_img_to_window (vars, x, y - 1, vars->game_images.cld_exit);
 	if (vars->party.player_direction == 'r')
 	{
 		if (mlx_put_image_to_window (vars->mlx, vars->win,

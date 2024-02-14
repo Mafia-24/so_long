@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:17:16 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 15:05:05 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:15:28 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	move_enemy_left(t_vars *vars, int i)
 	safe_put_image (vars, vars->game_images.bg_img,
 		(vars->patrols[i].pos.y) * 50, (vars->patrols[i].pos.x) * 50);
 	reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y);
-	safe_put_image (vars, vars->game_images.l_enmy_imgs[vars->patrols[i].img_number],
+	safe_put_image (vars,
+		vars->game_images.l_enmy_imgs[vars->patrols[i].img_number],
 		(vars->patrols[i].pos.y) * 50 - 12 * vars->patrols[i].img_number,
 		(vars->patrols[i].pos.x) * 50);
 	vars->patrols[i].img_number++;

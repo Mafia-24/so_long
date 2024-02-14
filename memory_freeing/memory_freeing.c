@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 16:03:08 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 17:37:43 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:20:56 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	exit_free(t_vars *vars)
 		i++;
 	}
 	mlx_destroy_image (vars->mlx, vars->game_images.bg_img);
-	mlx_destroy_image (vars->mlx, vars->game_images.closed_exit);
+	mlx_destroy_image (vars->mlx, vars->game_images.cld_exit);
 	mlx_destroy_image (vars->mlx, vars->game_images.coll_img);
 	mlx_destroy_image (vars->mlx, vars->game_images.open_exit);
 	mlx_destroy_image (vars->mlx, vars->game_images.wall_img);
@@ -50,8 +50,8 @@ void	exit_free(t_vars *vars)
 
 static void	free_rest_vars(t_vars *vars)
 {
-	if (vars->game_images.closed_exit)
-		mlx_destroy_image (vars->mlx, vars->game_images.closed_exit);
+	if (vars->game_images.cld_exit)
+		mlx_destroy_image (vars->mlx, vars->game_images.cld_exit);
 	if (vars->game_images.open_exit)
 		mlx_destroy_image (vars->mlx, vars->game_images.open_exit);
 	if (vars->game_images.coll_img)
@@ -74,16 +74,16 @@ void	free_allocated_vars(t_vars *vars)
 	while (i < 4)
 	{
 		if (!vars->game_images.r_dino_imgs[i])
-			break;
+			break ;
 		mlx_destroy_image (vars->mlx, vars->game_images.r_dino_imgs[i]);
 		if (!vars->game_images.l_dino_imgs[i])
-			break;
+			break ;
 		mlx_destroy_image (vars->mlx, vars->game_images.l_dino_imgs[i]);
 		if (!vars->game_images.r_enmy_imgs[i])
-			break;
+			break ;
 		mlx_destroy_image (vars->mlx, vars->game_images.r_enmy_imgs[i]);
 		if (!vars->game_images.l_enmy_imgs[i])
-			break;
+			break ;
 		mlx_destroy_image (vars->mlx, vars->game_images.l_enmy_imgs[i]);
 		i++;
 	}
