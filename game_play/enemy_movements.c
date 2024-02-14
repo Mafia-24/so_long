@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:17:16 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 18:15:28 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:52:25 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 void	move_enemy_right(t_vars *vars, int i)
 {
+	if (vars->map.components[vars->patrols[i].pos.x][vars->patrols[i].pos.y + 1]
+		== '1')
+	{
+		vars->patrols[i].direction = 'l';
+		safe_put_image (vars, vars->game_images.bg_img,
+			(vars->patrols[i].pos.y - 1) * 50, (vars->patrols[i].pos.x) * 50);
+		reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y - 1);
+		return ;
+	}
 	safe_put_image (vars, vars->game_images.bg_img,
 		(vars->patrols[i].pos.y - 1) * 50, (vars->patrols[i].pos.x) * 50);
 	reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y - 1);
@@ -30,18 +39,19 @@ void	move_enemy_right(t_vars *vars, int i)
 		vars->patrols[i].pos.y++;
 		vars->patrols[i].img_number = 0;
 	}
-	if (vars->map.components[vars->patrols[i].pos.x][vars->patrols[i].pos.y + 1]
-		== '1')
-	{
-		vars->patrols[i].direction = 'l';
-		safe_put_image (vars, vars->game_images.bg_img,
-			(vars->patrols[i].pos.y - 1) * 50, (vars->patrols[i].pos.x) * 50);
-		reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y - 1);
-	}
 }
 
 void	move_enemy_left(t_vars *vars, int i)
 {
+	if (vars->map.components[vars->patrols[i].pos.x][vars->patrols[i].pos.y - 1]
+	== '1')
+	{
+		vars->patrols[i].direction = 'r';
+		safe_put_image (vars, vars->game_images.bg_img,
+			(vars->patrols[i].pos.y + 1) * 50, (vars->patrols[i].pos.x) * 50);
+		reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y + 1);
+		return ;
+	}
 	safe_put_image (vars, vars->game_images.bg_img,
 		(vars->patrols[i].pos.y + 1) * 50, (vars->patrols[i].pos.x) * 50);
 	reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y + 1);
@@ -57,14 +67,6 @@ void	move_enemy_left(t_vars *vars, int i)
 	{
 		vars->patrols[i].pos.y--;
 		vars->patrols[i].img_number = 0;
-	}
-	if (vars->map.components[vars->patrols[i].pos.x][vars->patrols[i].pos.y - 1]
-	== '1')
-	{
-		vars->patrols[i].direction = 'r';
-		safe_put_image (vars, vars->game_images.bg_img,
-			(vars->patrols[i].pos.y + 1) * 50, (vars->patrols[i].pos.x) * 50);
-		reset_image (vars, vars->patrols[i].pos.x, vars->patrols[i].pos.y + 1);
 	}
 }
 
