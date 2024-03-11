@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 04:12:08 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 18:29:08 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:34:43 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	put_steps_number(t_vars *vars)
 {
 	char	*steps;
 
+	ft_putnbr (vars->party.movements);
+	write (1, " step\n", 6);
 	safe_put_image (vars, vars->game_images.bg_img, 0, 0);
 	safe_put_image (vars, vars->game_images.wall_img, 0, 0);
 	safe_put_image (vars, vars->game_images.bg_img, 50, 0);
@@ -52,21 +54,20 @@ int	handle_keyrelease(int keysym, t_vars *vars)
 		exit_game (vars);
 	else if (keysym == 13)
 	{
-		move_player_up (vars);
+		move_player_up (vars, vars->player_pos.x, vars->player_pos.y);
 	}
 	else if (keysym == 2)
 	{
-		move_player_right (vars);
+		move_player_right (vars, vars->player_pos.x, vars->player_pos.y);
 	}
 	else if (keysym == 1)
 	{
-		move_player_down (vars);
+		move_player_down (vars, vars->player_pos.x, vars->player_pos.y);
 	}
 	if (keysym == 0)
 	{
-		move_player_left (vars);
+		move_player_left (vars, vars->player_pos.x, vars->player_pos.y);
 	}
-	put_steps_number (vars);
 	return (0);
 }
 

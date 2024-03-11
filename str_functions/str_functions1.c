@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:15:04 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/01/12 23:42:45 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:38:35 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,31 @@ char	*ft_strdup(const char *s1)
 	}
 	*(dup + i) = '\0';
 	return (dup);
+}
+
+void	ft_putnbr(int n)
+{
+	char	to_print;
+
+	if (n == -2147483648)
+		write (1, "-2147483648", 11);
+	else
+	{
+		if (n < 0)
+		{
+			write (1, "-", 1);
+			n *= -1;
+		}
+		if (n / 10)
+		{
+			to_print = '0' + n % 10;
+			ft_putnbr(n / 10);
+			write (1, &to_print, 1);
+		}
+		else
+		{
+			to_print = '0' + n % 10;
+			write (1, &to_print, 1);
+		}
+	}
 }

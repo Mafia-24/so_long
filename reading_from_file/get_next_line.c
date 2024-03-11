@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 16:08:41 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/01/02 14:04:44 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:44:23 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	reader(int fd, char **buffer, char **fl, char **stat)
 	int	reed;
 
 	i = 0;
-	reed = read(fd, *buffer, BUFFER_SIZE);
+	reed = read(fd, *buffer, 1);
 	if (!reed)
 		return (-1);
 	(*buffer)[reed] = '\0';
@@ -67,7 +67,7 @@ int	allocating(char **buffer, char **fl, char **st)
 {
 	size_t	size;
 
-	*buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	*buffer = (char *)malloc((2) * sizeof(char));
 	if (!(*buffer))
 		return (0);
 	if (*st)
@@ -96,7 +96,7 @@ char	*get_next_line(int fd)
 	char		*fl;
 	int			rett;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, "", 0) < 0
+	if (fd < 0 || read(fd, "", 0) < 0
 		|| !allocating(&buffer, &fl, &st))
 		return (freeing(&st, NULL, NULL, 1));
 	while (!cont_nl(fl))

@@ -6,7 +6,7 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 03:30:42 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 18:25:19 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:40:49 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ void	initialize_map(t_map map)
 	set_images (&vars);
 	set_party_infos (&vars);
 	map_to_image (map, &vars);
+	ft_putnbr (0);
+	write (1, " step\n", 6);
 	if (mlx_string_put (vars.mlx, vars.win, 10, 10, 0x00FFFFFF, "Steps ") == -1)
 		mlx_error(&vars);
 	steps = ft_itoa (vars.party.movements);

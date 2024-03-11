@@ -6,20 +6,16 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:17:15 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 18:37:31 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:34:29 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	move_player_up(t_vars *vars)
+void	move_player_up(t_vars *vars, int x, int y)
 {
 	static int	i;
-	int			x;
-	int			y;
 
-	x = vars->player_pos.x;
-	y = vars->player_pos.y;
 	if (i == 4)
 		i = 0;
 	if (vars->map.components[x - 1][y] != '1')
@@ -38,17 +34,14 @@ void	move_player_up(t_vars *vars)
 		}
 		vars->player_pos.x = vars->player_pos.x - 1;
 		vars->party.movements++;
+		put_steps_number (vars);
 	}
 }
 
-void	move_player_down(t_vars *vars)
+void	move_player_down(t_vars *vars, int x, int y)
 {
 	static int	i;
-	int			x;
-	int			y;
 
-	x = vars->player_pos.x;
-	y = vars->player_pos.y;
 	if (i == 4)
 		i = 0;
 	if (vars->map.components[x + 1][y] != '1')
@@ -67,17 +60,14 @@ void	move_player_down(t_vars *vars)
 		}
 		vars->player_pos.x = vars->player_pos.x + 1;
 		vars->party.movements++;
+		put_steps_number (vars);
 	}
 }
 
-void	move_player_right(t_vars *vars)
+void	move_player_right(t_vars *vars, int x, int y)
 {
 	static int	i;
-	int			x;
-	int			y;
 
-	x = vars->player_pos.x;
-	y = vars->player_pos.y;
 	if (i == 4)
 		i = 0;
 	if (vars->map.components[x][y + 1] != '1')
@@ -96,17 +86,14 @@ void	move_player_right(t_vars *vars)
 			vars->party.collected++;
 		}
 		vars->player_pos.y = vars->player_pos.y + 1;
+		put_steps_number (vars);
 	}
 }
 
-void	move_player_left(t_vars *vars)
+void	move_player_left(t_vars *vars, int x, int y)
 {
 	static int	i;
-	int			x;
-	int			y;
 
-	x = vars->player_pos.x;
-	y = vars->player_pos.y;
 	if (i == 4)
 		i = 0;
 	if (vars->map.components[x][y - 1] != '1')
@@ -125,5 +112,6 @@ void	move_player_left(t_vars *vars)
 			vars->party.collected++;
 		}
 		vars->player_pos.y = vars->player_pos.y - 1;
+		put_steps_number (vars);
 	}
 }

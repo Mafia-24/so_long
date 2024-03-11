@@ -6,19 +6,17 @@
 /*   By: ymafaman <ymafaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:03:30 by ymafaman          #+#    #+#             */
-/*   Updated: 2024/02/14 18:27:43 by ymafaman         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:43:39 by ymafaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define BUFFER_SIZE 10
 # include <fcntl.h>
 # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <stdbool.h>
 
 typedef struct s_map
@@ -108,6 +106,7 @@ int		ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	*ft_itoa(int n);
 char	*ft_strrchr(char *str, int c);
+void	ft_putnbr(int n);
 
 char	*get_next_line(int fd);
 int		allocating(char **buffer, char **fl, char **st);
@@ -147,10 +146,10 @@ void	map_to_image(t_map map, t_vars *vars);
 void	reset_image(t_vars *vars, int x, int y);
 void	check_portal(t_vars *vars);
 int		move_enemies(t_vars *vars);
-void	move_player_up(t_vars *vars);
-void	move_player_down(t_vars *vars);
-void	move_player_right(t_vars *vars);
-void	move_player_left(t_vars *vars);
+void	move_player_up(t_vars *vars, int x, int y);
+void	move_player_down(t_vars *vars, int x, int y);
+void	move_player_right(t_vars *vars, int x, int y);
+void	move_player_left(t_vars *vars, int x, int y);
 void	initialize_map(t_map map);
 void	find_dinau_position(t_map map, t_point *player);
 int		move_dinau(t_vars *vars);
